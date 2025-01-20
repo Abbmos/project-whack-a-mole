@@ -3,12 +3,13 @@ let SCORE = 0;
 let MAX_MISSED_HOLES
 let timerInc = 31;
 let loseMessage = "YOU LOST!!!!";
+let timer;
 /*-------------------cached elements-------------------*/
 
 const holes = document.querySelectorAll('.hole');
 const scoreElement = document.querySelector("#score-message");
 const mistakeElement = document.querySelector("#mistake");
-const timerElement= document.querySelector("#timer");
+const timerElement = document.querySelector("#timer");
 const bodyELement = document.querySelector("body");
 const gameContElement = document.querySelector("#game-container");
 const gameStartElement = document.querySelector("#game_start");
@@ -16,33 +17,51 @@ const imgElements = document.querySelectorAll("img");
 scoreElement.textContent = SCORE;
 
 /*---------------------Functions-----------------------*/
+playerWin = () => {
+
+  gameContElement.classList.add(".hidden")
+  endGame();
+}
 function playerLost() {
-// alert('PLAYER LOST');
 
 
-bodyELement.style.backgroundColor="magenta";
-let LOSTMESSAGE= document.createAttribute('div');
-LOSTMESSAGE.textContent=loseMessage;
-gameContElement.appendChild(LOSTMESSAGE);
+
+  bodyELement.style.backgroundColor = "magenta";
+
+  endGame();
+  // let LOSTMESSAGE= document.createAttribute('div');
+  // LOSTMESSAGE.textContent=loseMessage;
+  // gameContElement.appendChild(LOSTMESSAGE);
+
+
 }
 function activateRandomHole() {
-
+  holes.forEach(hole=> hole.classList.remove('hole-stop'));
   holes.forEach(hole => hole.classList.remove('active'));
-  imgElements.forEach(img => img.src="")
+  imgElements.forEach(img => img.src = "empty.png")
 
   const randomIndex = Math.floor(Math.random() * holes.length);
   holes[randomIndex].classList.add('active');
-  imgElements[randomIndex].src="mole.jpg";
-  
-  if (timerInc>=1){
-  timerInc--;
-timerElement.textContent=timerInc;}
-else {playerLost();}
+  imgElements[randomIndex].src = "mole.jpg";
+  checkWin();
+  if (timerInc >= 1) {
+    timerInc--;
+    timerElement.textContent = timerInc;
+  }
+  else { playerLost(); }
 }
 
-function endGame(){
-
-
+function endGame() {
+  
+  stopTimer();
+  // mistakeElement.textContent="_ _ _";
+  // timerElement.textContent=0;
+SCORE=0;
+  holes.forEach(hole => hole.classList.remove('active'));
+  holes.forEach(hole=> hole.classList.add('hole-stop'));
+  imgElements.forEach(img => img.src = "empty.png")
+  gameStartElement.textContent = "Restart";
+  gameStartElement.classList.remove("hidden");
 
 }
 
@@ -70,27 +89,45 @@ let addMistake = () => {
     }
 
 }
-   let updateTimer = () => {
 
-  setInterval(activateRandomHole, 1000);
+let checkWin = () => {
+  console.log("heeyyy");
+  console.log(SCORE);
+  if (SCORE >= 150) {
+    playerWin();
+    endGame();
+  }
 
 
- }
+
+}
+
+let updateTimer = (interval) => {
+  // if (timerElement.textContent!=0){
+  interval = 1000;
+
+  timer = setInterval(activateRandomHole, interval);
+  console.log(interval);
+
+
+}
+let stopTimer = () => {
+  clearInterval(timer);
+}
 let startGame = () => {
-updateTimer();
-gameStartElement.classList.add("hidden");
+  MAX_MISSED_HOLES = 3;
+  mistakeElement.textContent = "_ _ _";
+  timerElement.textContent = 0;
+  scoreElement.textContent = SCORE;
+  timerInc = 31;
+  bodyELement.style.backgroundColor = "white";
+  scoreElement.textContent = 0;
+  updateTimer();
+  gameStartElement.classList.add("hidden");
+  
 
 }
-let init = () => {
-sta
 
-
-
-}
-// let increaseScore = (h) =>{
-//   if (h.classList.contains('active')){
-// SCORE+=10;
-// scoreElement.textContent=SCORE;}}
 
 /*--------------------Event Listener---------------------*/
 holes.forEach(hole => {
