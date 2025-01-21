@@ -1,31 +1,23 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <script defer src="app.js"></script>
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="style.css">
+ <script defer src="idx.js"></script>
+  <title>Document</title>
 </head>
 <body>
-<button id="game_start">Start Game</button>
+  <h1>Whack a Mole</h1>
+<div id="instructionsCont">
+<button id="playBtn">Play</button>
+<button id="instructionsBtn"> Instructions</button>
 
+  <div id="instructions" class="hidden">
+    <h2>Instructions</h2>
+    <p>Click the moles as they pop up to earn points. The game ends when you make 3 mistakes.</p>
 
-<div id="timer"></div>
-<div id="mistake">_ _ _</div>
-    <div id="game-container">
-      <h1 id="score-message"></h1>
-        <div class="grid">
-          <div class="hole hole-stop" id="hole-1"><img id="img1" src=""> </div>
-          <div class="hole hole-stop" id="hole-2"><img id="img2" src=""> </div>
-          <div class="hole hole-stop" id="hole-3"><img id="img3" src=""> </div>
-          <div class="hole hole-stop" id="hole-4"><img id="img4" src=""> </div>
-          <div class="hole hole-stop" id="hole-5"><img id="img5" src=""> </div>
-          <div class="hole hole-stop" id="hole-6"><img id="img6" src=""> </div>
-          <div class="hole hole-stop" id="hole-7"><img id="img7" src=""> </div>
-          <div class="hole hole-stop" id="hole-8"><img id="img8" src=""> </div>
-          <div class="hole hole-stop" id="hole-9"><img id="img9" src=""> </div>
-        </div>
-      </div>
+</div>
 </body>
 </html>

@@ -5,7 +5,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f3f4f6;
+    /* background-color: #f3f4f6; */
+    background:url("grass.jpg");
     margin: 0;
     flex-direction: column;
  
@@ -35,11 +36,12 @@ flex-wrap: wrap;
   .hole {
     width: 30%;
     height: 30%;
-    background-color: green; 
+    /* background-color: green;  */
     border-radius: 50%;
     position: relative;
     cursor: pointer;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+border: 5px solid brown;
     
   }
   #score-message {
@@ -48,11 +50,11 @@ margin: 30px;
 
   }
  
-  .hole.active {
-    background-color: red; 
+  /* .hole.active {
+     background-color: red;  
     
 
-  }
+  } */
   #mistake {
 display: block;
 margin: 60px;
@@ -65,10 +67,7 @@ font-size: 90px;
 
   }
 
-  .hidden {
-
-    display: none;
-  }
+ 
   img {
     width: 100%;
     height: 100%;
@@ -83,3 +82,26 @@ font-size: 90px;
     pointer-events:none;
 
   }
+  .hidden {
+
+    display: none;
+  }
+  /* main menu */
+
+button {
+
+font-family: 'Times New Roman', Times, serif;
+font-size: 40px;
+
+
+} 
+
+/*center elements inside instruction cont*/
+#instructionsCont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+gap: 20px;
+}
