@@ -2,8 +2,9 @@
 let SCORE = 0;
 let MAX_MISSED_HOLES
 let timerInc = 31;
-let loseMessage = "YOU LOST!!!!";
 let timer;
+let randomIndex;
+let holeImages = "mole-NB.PNG";
 /*-------------------cached elements-------------------*/
 
 const holes = document.querySelectorAll('.hole');
@@ -14,12 +15,14 @@ const bodyELement = document.querySelector("body");
 const gameContElement = document.querySelector("#game-container");
 const gameStartElement = document.querySelector("#game_start");
 const imgElements = document.querySelectorAll("img");
-scoreElement.textContent = SCORE;
+scoreElement.textContent = `Score: ${SCORE}`;
 
 /*---------------------Functions-----------------------*/
 playerWin = () => {
 
   gameContElement.classList.add(".hidden")
+  mistakeElement.textContent="You Won!";
+  mistakeElement.style.maxWidth="100%";
   endGame();
 }
 function playerLost() {
@@ -27,42 +30,39 @@ function playerLost() {
 
 
   bodyELement.style.backgroundColor = "magenta";
-
+mistakeElement.textContent="You Lost!";
   endGame();
-  // let LOSTMESSAGE= document.createAttribute('div');
-  // LOSTMESSAGE.textContent=loseMessage;
-  // gameContElement.appendChild(LOSTMESSAGE);
-
+  
 
 }
 function activateRandomHole() {
-  holes.forEach(hole=> hole.classList.remove('hole-stop'));
+  holes.forEach(hole => hole.classList.remove('hole-stop'));
   holes.forEach(hole => hole.classList.remove('active'));
-  imgElements.forEach(img => img.src = "hole-empty.PNG")
+  imgElements.forEach(img => img.src = "hole-empty-NB.PNG")
 
-  const randomIndex = Math.floor(Math.random() * holes.length);
+   randomIndex = Math.floor(Math.random() * holes.length);
   holes[randomIndex].classList.add('active');
-  imgElements[randomIndex].src = "mole.png";
+
+imgElements[randomIndex].src = holeImages;
   checkWin();
   if (timerInc >= 1) {
     timerInc--;
-    timerElement.textContent = timerInc;
+    timerElement.textContent = `⏲:${timerInc}s`;
   }
   else { playerLost(); }
 }
 
 function endGame() {
-  
+
   stopTimer();
-  // mistakeElement.textContent="_ _ _";
-  // timerElement.textContent=0;
-SCORE=0;
+ 
+  SCORE = 0;
   holes.forEach(hole => hole.classList.remove('active'));
-  holes.forEach(hole=> hole.classList.add('hole-stop'));
-  // imgElements.forEach(img => img.src = "empty.png")
+  holes.forEach(hole => hole.classList.add('hole-stop'));
+ 
   gameStartElement.textContent = "Restart";
   gameStartElement.classList.remove("hidden");
-  // gameStartElement.style.display="hidden";
+  
 
 }
 
@@ -92,8 +92,8 @@ let addMistake = () => {
 }
 
 let checkWin = () => {
-  console.log("heeyyy");
-  console.log(SCORE);
+  
+  
   if (SCORE >= 150) {
     playerWin();
     endGame();
@@ -104,11 +104,11 @@ let checkWin = () => {
 }
 
 let updateTimer = (interval) => {
-  // if (timerElement.textContent!=0){
+  
   interval = 1000;
 
   timer = setInterval(activateRandomHole, interval);
-  console.log(interval);
+
 
 
 }
@@ -117,35 +117,35 @@ let stopTimer = () => {
 }
 
 let toggleDiv = () => {
-  if (mistakeElement.style.display!=="none"){
-   
-   scoreElement.style.display="none";
-   holes.forEach(hole => {hole.style.display="none";  })
-  mistakeElement.style.display="none";}
-else if (mistakeElement.style.display==="none"){
+  if (mistakeElement.style.display !== "none") {
 
-  scoreElement.style.display="flex";
-  holes.forEach(hole => {hole.style.display="flex";  })
- mistakeElement.style.display="flex";
+    scoreElement.style.display = "none";
+    holes.forEach(hole => { hole.style.display = "none"; })
+    mistakeElement.style.display = "none";
+  }
+  else if (mistakeElement.style.display === "none") {
+
+    scoreElement.style.display = "flex";
+    holes.forEach(hole => { hole.style.display = "flex"; })
+    mistakeElement.style.display = "flex";
 
 
 
-}
+  }
 }
 
 let startGame = () => {
   MAX_MISSED_HOLES = 3;
   mistakeElement.textContent = "_ _ _";
-  timerElement.textContent = 0;
-  scoreElement.textContent = SCORE;
+  timerElement.textContent = `⏲: ${0}s`;
+  scoreElement.textContent = `Score: ${SCORE}`;
   timerInc = 31;
   bodyELement.style.backgroundColor = "white";
-  scoreElement.textContent = 0;
+  scoreElement.textContent = `Score: ${0}`;
   updateTimer();
   gameStartElement.classList.add("hidden");
-  // toggleDiv();
-  // gameStartElement.style.display="hidden";
-  
+ 
+
 
 }
 
@@ -157,8 +157,13 @@ holes.forEach(hole => {
   hole.addEventListener("click", () => {
 
     if (hole.classList.contains("active")) {
+
       SCORE += 10;
-      scoreElement.textContent = SCORE;
+      scoreElement.textContent = `Score: ${SCORE}`;
+      let holeID = hole.id;
+      let idx = holeID.slice(5, 6);
+      imgElements[idx - 1].src = "mole-angry-NB.PNG";
+
     }
     else if (!hole.classList.contains("active")) {
       addMistake();
@@ -168,10 +173,9 @@ holes.forEach(hole => {
 
   });
 
+
 }
 
 
 );
 gameStartElement.addEventListener("click", startGame);
-// hideDiv();
-// startGame();

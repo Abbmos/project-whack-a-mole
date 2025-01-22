@@ -9,15 +9,23 @@
   <title>Document</title>
 </head>
 <body>
-  <h1>Whack a Mole</h1>
-<div id="instructionsCont">
-<button id="playBtn">Play</button>
-<button id="instructionsBtn"> Instructions</button>
-
-  <div id="instructions" class="hidden">
+  <h1 class="title-style">Whack a Mole</h1>
+  <div id="instructions-img">
+    <div id="instructions" class="instruction-block hidden">
     <h2>Instructions</h2>
-    <p>Click the moles as they pop up to earn points. The game ends when you make 3 mistakes.</p>
-
+ <ul>
+  <li>Click the holes with a mole to earn points.</li>
+  <li>Reach 150 points to win the game.</li>
+  <li>You lose if you hit an empty hole 3 times</li>
+  <li>You lose if the timer runs out.</li>
+  <li>Good luck!</li>
+ </ul>
 </div>
+<img id ="main-image" src="mole-angry-NB.PNG" alt="Main Mole Image">
+</div>
+  
+<div id="instructionsCont">
+<button id="playBtn" class="btn-style">Play</button>
+<button id="instructionsBtn" class="btn-style"> Instructions</button>
 </body>
 </html>
