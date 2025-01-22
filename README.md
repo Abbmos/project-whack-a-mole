@@ -17,3 +17,6 @@
 * HTML
 * CSS
 * JavaScript
+
+# Next Steps:
+Make the game more challenging by adding a snake that pops up instead of the mole occasionally to confuse the player and cause them to misclick.
