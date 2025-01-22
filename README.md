@@ -1,7 +1,7 @@
-#Screenshots
-##Main Page (index.html)
+# Screenshots
+## Main Page (index.html)
 ![image](https://github.com/user-attachments/assets/4d3e9b95-06e8-4236-89e0-c3e1e1bfa00a)
-##Game Page
+## Game Page
 ![image](https://github.com/user-attachments/assets/0a4fb5f2-b93b-460f-96fe-9cb640dc862c)
 
 >Game Name: Whack A Mole
@@ -10,10 +10,10 @@
 >>each hit on an empty hole will get the player a strike, the player loses when they get 3 strikes.
 >>the player can lose too if they run out of 30 seconds.
 
-##[Whack A Mole Game](https://abbmos.github.io/project-whack-a-mole/game.html)
-##[Trello Board](https://trello.com/b/BDKBJpps/project-1-planning-whack-a-mole-game)
+## [Whack A Mole Game](https://abbmos.github.io/project-whack-a-mole/game.html)
+## [Trello Board](https://trello.com/b/BDKBJpps/project-1-planning-whack-a-mole-game)
 
-#Technologies Used:
-*HTML
-*CSS
-*JavaScript
+# Technologies Used:
+* HTML
+* CSS
+* JavaScript
